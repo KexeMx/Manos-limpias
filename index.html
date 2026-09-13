@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0b3d3a" />
+  <title>Manos Limpias AR</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="app">
+    <header class="topbar">
+      <h1>🧼 Manos Limpias <span class="ar-badge">AR</span></h1>
+      <button id="infoBtn" class="icon-btn" aria-label="Cómo funciona" title="Cómo funciona">?</button>
+    </header>
+
+    <main class="stage">
+      <video id="video" playsinline autoplay muted></video>
+      <canvas id="output"></canvas>
+
+      <div id="statusOverlay" class="status-overlay hidden">
+        <div class="status-box">
+          <p id="statusText">Iniciando cámara…</p>
+          <button id="retryBtn" class="btn hidden">Reintentar</button>
+        </div>
+      </div>
+
+      <div id="cleanBanner" class="clean-banner hidden">✨ ¡Manos limpias! ✨</div>
+    </main>
+
+    <section class="hud">
+      <div class="stat">
+        <span class="stat-value" id="germCount">0</span>
+        <span class="stat-label">gérmenes activos</span>
+      </div>
+      <div class="stat">
+        <span class="stat-value" id="cleanedCount">0</span>
+        <span class="stat-label">eliminados en total</span>
+      </div>
+    </section>
+
+    <section class="controls">
+      <label class="switch-wrap" for="cleanToggle">
+        <span class="switch-label dirty">🦠 Sucias</span>
+        <span class="switch">
+          <input type="checkbox" id="cleanToggle" />
+          <span class="slider"></span>
+        </span>
+        <span class="switch-label clean">✨ Limpias</span>
+      </label>
+
+      <button id="flipCameraBtn" class="btn secondary">🔄 Cambiar cámara</button>
+    </section>
+  </div>
+
+  <div id="infoModal" class="modal hidden">
+    <div class="modal-content">
+      <h2>¿Cómo funciona?</h2>
+      <ul>
+        <li>Apunta la cámara hacia tus manos.</li>
+        <li>La app detecta tus manos y simula gérmenes 🦠 sobre ellas.</li>
+        <li>Mueve el interruptor a <strong>"Limpias"</strong> para simular el lavado de manos y ver cómo desaparecen.</li>
+        <li>Es una simulación educativa para recordarte lavarte las manos seguido — no detecta gérmenes reales.</li>
+      </ul>
+      <button id="closeInfoBtn" class="btn">Entendido</button>
+    </div>
+  </div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
